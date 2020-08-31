@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #d4d4d4;
+    overflow: hidden;
+}
+/* テキスト */
+#text{
+    position: relative;
+    color: rgb(252, 251, 251);
+    font-weight: bold; 
+    font-size: 210px;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-align: center;
+    /* テキストに影をつける*/
+    text-shadow: 1px -1px 0 #b8b0b0;
+    transform: rotate(-20deg) skew(25deg);
+    /* 左右にゆっくり移動 */
+    animation: right 10s 0.5s ease-out infinite alternate;   
+} 
+
+@keyframes right{
+    0%{
+        transform: rotate(-20deg) skew(25deg);        
+    }
+    100%{
+        transform: translateX(200px) rotate(-20deg) skew(25deg);
+    }
+}
+
+#text:before{
+    /* data属性のテキストを呼び出す */
+    content: attr(data-text);
+    position: absolute;
+    top: 35px;
+    left: -35px;
+    color: rgba(5, 5, 5, 0.3);
+    text-shadow: none;
+    filter: blur(7px);
+    /* テキストの重なり */
+    z-index: -1;  
+}
+
+/* ボタン */
+button{   
+     position:relative; 
+     /* position fixed top 180px left 300px */
+     width:180px; 
+     height:150px; 
+     font-size: 40px; 
+     color: #20eb9d; 
+     background: #d4d4d4;
+     /* ボーダーをなくす */
+     border-style: none; 
+     top: -200px;
+     left: -1300px; 
+     cursor: pointer; 
+     border-radius:100vh;     
+     /* ボタンを斜めに */
+     transform: rotate(-20deg) skew(25deg);  
+     /* ボタンの点滅 */
+     animation: flash 7s ease-in-out infinite; 
+  } 
+
+ @keyframes flash { 
+  0%,50%,100%{ 
+    transform: rotate(-20deg) skew(25deg) scale(0.5); 
+    opacity: 0; 
+  } 
+   40%{ 
+     transform: rotate(-20deg) skew(25deg); 
+     opacity: 0.9; 
+     color:  #3f3f3f;  
+     background:rgb(240, 133, 186); 
+     /* ボタンの影を指定 */
+     box-shadow: 0 0 10px 5px rgb(240, 133, 204);
+  } 
+   80%{ 
+     transform: rotate(-20deg) skew(25deg);   
+     opacity: 0.9; 
+     color: rgb(236, 37, 137);
+     background: skyblue; 
+     /* ボタンの影を指定 */
+     box-shadow: 0 0 10px 5px rgb(119, 206, 240);
+   } 
+  } 
